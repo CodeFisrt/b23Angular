@@ -23,20 +23,22 @@ export class UserComponent {
   }
 
   getAllUsers() {
-     this.http.get("https://freeapi.gerasim.in/api/EventBooking/GetAllUsers").subscribe((res:any) => {
+     this.http.get("https://freeapi.gerasim.in/api/EventBooking/GetAllUsers")
+     .subscribe((res:any) => {
       debugger;
       this.userList = res.data;
      })
   }
   onSaveUSer() {
     debugger;
-    this.http.post("https://freeapi.gerasim.in/api/EventBooking/CreateUser", this.userObj).subscribe((res:any)=>{
+    this.http.post("https://freeapi.gerasim.in/api/EventBooking/CreateUser", this.userObj)
+    .subscribe((result:any)=>{
       debugger;
-      if(res.result) {
+      if(result.result) {
         alert("User Created Succefully");
         this.getAllUsers() 
       } else {
-        alert(res.message)
+        alert(result.message)
       }
     })
   }
